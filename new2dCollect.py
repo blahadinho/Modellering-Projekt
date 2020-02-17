@@ -5,6 +5,7 @@ import time
 import textwrap
 import winsound
 import os
+import msvcrt
 
 #HELP METHODS
 def calcError(old, new):  #return error between times old and new
@@ -78,30 +79,30 @@ while(True):
 
     try:  #try loading page with data
         #print("Fetching data")
-        reqSlussen = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=40b33d715cc44637944291785efcf849&siteid=9192&timewindow=4')
-        reqMedborgarplatsen = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=40b33d715cc44637944291785efcf849&siteid=9191&timewindow=4')
-        reqNytorgsgatan = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=40b33d715cc44637944291785efcf849&siteid=1327&timewindow=4')
-        reqÅsögatan = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=40b33d715cc44637944291785efcf849&siteid=1308&timewindow=4')
-        reqGotlandsgatan = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=40b33d715cc44637944291785efcf849&siteid=1312&timewindow=4')
-        reqSödermannagatan = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=40b33d715cc44637944291785efcf849&siteid=1311&timewindow=4')
-        reqSkanstull = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=40b33d715cc44637944291785efcf849&siteid=9190&timewindow=4')
-        reqEriksdal = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=40b33d715cc44637944291785efcf849&siteid=1352&timewindow=4')
+        reqSlussen = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=07ad6c9d9d144ea9afb39e6708aafe81&siteid=9192&timewindow=4')
+        reqMedborgarplatsen = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=07ad6c9d9d144ea9afb39e6708aafe81&siteid=9191&timewindow=4')
+        reqNytorgsgatan = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=07ad6c9d9d144ea9afb39e6708aafe81&siteid=1327&timewindow=4')
+        reqÅsögatan = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=07ad6c9d9d144ea9afb39e6708aafe81&siteid=1308&timewindow=4')
+        reqGotlandsgatan = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=07ad6c9d9d144ea9afb39e6708aafe81&siteid=1312&timewindow=4')
+        reqSödermannagatan = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=07ad6c9d9d144ea9afb39e6708aafe81&siteid=1311&timewindow=4')
+        reqSkanstull = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=07ad6c9d9d144ea9afb39e6708aafe81&siteid=9190&timewindow=4')
+        reqEriksdal = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=07ad6c9d9d144ea9afb39e6708aafe81&siteid=1352&timewindow=4')
         reqRosenlund = urllib.request.urlopen(
-            'https://api.sl.se/api2/realtimedeparturesV4.xml?key=40b33d715cc44637944291785efcf849&siteid=1351&timewindow=4')
+            'https://api.sl.se/api2/realtimedeparturesV4.xml?key=07ad6c9d9d144ea9afb39e6708aafe81&siteid=1351&timewindow=4')
     except:  #sleep ten seconds before refreshing
         print("Nu kunde sidan inte hämtas")
         winsound.PlaySound("Crash-Cymbal-1.wav", winsound.SND_FILENAME)
         t.sleep(20)
-        reqSlussen = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=40b33d715cc44637944291785efcf849&siteid=9192&timewindow=4')
-        reqMedborgarplatsen = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=540b26d4e7bf4b8bbcf9a808c357dcbc&siteid=9191&timewindow=4')
-        reqNytorgsgatan = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=40b33d715cc44637944291785efcf849&siteid=1327&timewindow=4')
-        reqÅsögatan = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=40b33d715cc44637944291785efcf849&siteid=1308&timewindow=4')
-        reqGotlandsgatan = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=40b33d715cc44637944291785efcf849&siteid=1312&timewindow=4')
-        reqSödermannagatan = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=40b33d715cc44637944291785efcf849&siteid=1311&timewindow=4')
-        reqSkanstull = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=40b33d715cc44637944291785efcf849&siteid=9190&timewindow=4')
-        reqEriksdal = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=40b33d715cc44637944291785efcf849&siteid=1352&timewindow=4')
+        reqSlussen = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=07ad6c9d9d144ea9afb39e6708aafe81&siteid=9192&timewindow=4')
+        reqMedborgarplatsen = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=07ad6c9d9d144ea9afb39e6708aafe81&siteid=9191&timewindow=4')
+        reqNytorgsgatan = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=07ad6c9d9d144ea9afb39e6708aafe81&siteid=1327&timewindow=4')
+        reqÅsögatan = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=07ad6c9d9d144ea9afb39e6708aafe81&siteid=1308&timewindow=4')
+        reqGotlandsgatan = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=07ad6c9d9d144ea9afb39e6708aafe81&siteid=1312&timewindow=4')
+        reqSödermannagatan = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=07ad6c9d9d144ea9afb39e6708aafe81&siteid=1311&timewindow=4')
+        reqSkanstull = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=07ad6c9d9d144ea9afb39e6708aafe81&siteid=9190&timewindow=4')
+        reqEriksdal = urllib.request.urlopen('https://api.sl.se/api2/realtimedeparturesV4.xml?key=07ad6c9d9d144ea9afb39e6708aafe81&siteid=1352&timewindow=4')
         reqRosenlund = urllib.request.urlopen(
-            'https://api.sl.se/api2/realtimedeparturesV4.xml?key=40b33d715cc44637944291785efcf849&siteid=1351&timewindow=4')
+            'https://api.sl.se/api2/realtimedeparturesV4.xml?key=07ad6c9d9d144ea9afb39e6708aafe81&siteid=1351&timewindow=4')
         print("Det löste sig")
         winsound.PlaySound("FANFARE.wav", winsound.SND_FILENAME)
 
@@ -112,7 +113,10 @@ while(True):
     for req in requests:  #traverse requests
         i = i + 1
         xml = BeautifulSoup(req, 'xml')
-
+        usedAPI = xml.findAll('Message')
+        if usedAPI.text == 'Could not retrive information for buses, trains or metro.':
+            print("The key is used, try a new one")
+            break
         for bus in xml.findAll('Bus'):
             #temporary bus values
             tempDest = bus.find('Destination').text
@@ -143,8 +147,10 @@ while(True):
 
                     #line = journey + "," + edt + "," + delay + "\n" #line to be written into the dataset-file
                     #newJourney(fileName, line)
-                    if int(journey)-10 in journeyDic:
-                        inputLine = journeyDic[journey - 10]
+                    j = int(journey)-10
+                    j = str(j)
+                    if j in journeyDic:
+                        inputLine = journeyDic[j]
                         newJourney(fileName, inputLine)
 
                     #winsound.PlaySound("FANFARE.wav", winsound.SND_FILENAME)
@@ -184,6 +190,9 @@ while(True):
 
     totTime = finishTime - startTime
     print("Total time for one iteration: ", totTime)  #between 1.4-12 seconds
+    if msvcrt.kbhit():
+        if msvcrt.getch() == b'q': # not '\n'
+            break
     #if(input() == "q"):
     #    break
     t.sleep(5)
