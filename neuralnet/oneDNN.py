@@ -11,9 +11,10 @@ data = open("modDifferences.txt").read()
 data = np.genfromtxt(StringIO(data))
 #print(data)
 
-maxElem = np.amax(data)
-print(maxElem)
-data = data/maxElem
+mean = np.mean(data)
+var = np.sqrt(np.var(data))
+#print(mean)
+data = (data-mean)/var
 
 #CREATE INPUT-OUTPUT MATRICES input and output
 depBusses = 10  #specify bus-dependence
@@ -40,7 +41,7 @@ X_train, X_test, y_train, y_test = train_test_split(input, output, test_size=0.2
 #print(np.shape(X_test))  #52 x 10
 #print(np.shape(y_test))  #52 x 1
 
-clf = MLPRegressor(solver='lbfgs', alpha=0.1, hidden_layer_sizes=(1), random_state=1, learning_rate='adaptive')
+clf = MLPRegressor(solver='adam', alpha=0.1, hidden_layer_sizes=(20, 10), random_state=1, learning_rate='adaptive')
 clfFit = clf.fit(X_train, y_train)
 
 
@@ -72,7 +73,7 @@ print()
 #print("len of ytrain: ", len(y_train))
 
 #CREATE BASEMODEL
-baseTrain = np.ones((len(y_train), 1))*25/maxElem
+baseTrain = (np.ones((len(y_train), 1))*25-mean)/var
 difbtr = baseTrain - y_train
 difbtr = np.transpose(difbtr)
 rmsBTr = math.sqrt(sum(np.asarray(list(map(lambda x : x**2, difbtr))))/len(trainPredict))
@@ -80,7 +81,7 @@ print("baseTrain: ", len(trainPredict))
 print("baseTrain vs y_train: ", rmsBTr)
 print()
 
-baseTest = np.ones((len(y_test), 1))*25/maxElem
+baseTest = (np.ones((len(y_test), 1))*25-mean)/var
 difbte = baseTest - y_test
 difbte = np.transpose(difbte)
 rmsBTe = math.sqrt(sum(np.asarray(list(map(lambda x : x**2, difbte))))/len(testPredict))
